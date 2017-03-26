@@ -15,8 +15,8 @@ STRUCTDEF(T)* NEW(T)(T val) {
     return holder;
 }
 
-void FREE(T)(STRUCTDEF(T) l) {
-    STRUCTDEF(T)* holder;
+void FREE(T)(STRUCTDEF(T)* l) {
+    STRUCTDEF(T)* holder=l;
     while (holder!=NULL) {
         STRUCTDEF(T)* i=holder;
         holder=holder->next;
