@@ -1,4 +1,4 @@
-#include "../../generics.h"
+#include "../generics.h"
 #define FREE(TYPE) CAT(free_lnode_, TYPE)
 #define NEW(TYPE) CAT(new_lnode_, TYPE)
 #define NODE(TYPE) CAT(lnode_,TYPE)

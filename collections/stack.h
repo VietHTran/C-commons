@@ -1,8 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <assert.h>
-#include "../../generics.h"
-#include "../linkedlist/linkedlist.h"
+#include "linkedlist.h"
 
 #define STACK(TYPE) CAT(stack_,TYPE)
 #define NEW_STACK(TYPE) CAT(new_stack_, TYPE)
