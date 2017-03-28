@@ -1,3 +1,4 @@
+//Generic queue implementation
 #include <stdlib.h>
 #include <stdbool.h>
 #include <assert.h>
@@ -11,6 +12,7 @@
 #define PEEK_QUEUE(TYPE_NAME) CAT(peek_queue_, TYPE_NAME)
 #define EMPTY_QUEUE(TYPE_NAME) CAT(is_empty_queue_, TYPE_NAME)
 
+//queue definition
 struct QUEUE(TN) {
     NODE(TN)* tail;
     NODE(TN)* front;
@@ -19,53 +21,22 @@ struct QUEUE(TN) {
 
 typedef struct QUEUE(TN) QUEUE(TN);
 
-QUEUE(TN)* NEW_QUEUE(TN)(){
-    QUEUE(TN)* S=(QUEUE(TN)*)malloc(sizeof(QUEUE(TN)));
-    S->tail=NULL;
-    S->front=NULL;
-    return S;
-}
+//creates a new storage for queue data structure in the heap memory and returns its pointer
+QUEUE(TN)* NEW_QUEUE(TN)();
 
-void ENQUEUE(TN)(QUEUE(TN)* S, T value) {
-    assert(S != NULL);
+//pushes new value into queue
+void ENQUEUE(TN)(QUEUE(TN)* S, T value);
 
-    NODE(TN)* holder=NEW(TN)(value);
+//removes the oldest value from queue and returns it
+T DEQUEUE(TN)(QUEUE(TN)* S);
 
-    if (S->front==NULL) {
-        S->front=holder;
-    } else {
-        S->tail->next=holder;
-    }
-    S->tail=holder;
-}
+//gets the oldest value in queue
+T PEEK_QUEUE(TN)(QUEUE(TN)* S);
 
-T DEQUEUE(TN)(QUEUE(TN)* S) {
-    assert(S!=NULL && S->front!=NULL);
+//checks if queue is empty
+bool EMPTY_QUEUE(TN)(QUEUE(TN)* S);
 
-    NODE(TN)* holder=S->front;
-    T val=holder->value;
+//frees queue and its elements
+void FREE_QUEUE(TN)(QUEUE(TN)* S);
 
-    S->front=S->front->next;
-    free(holder);
-
-    return val;
-}
-
-T PEEK_QUEUE(TN)(QUEUE(TN)* S) {
-    assert(S!=NULL && S->front!=NULL);
-    return S->front->value;
-}
-
-bool EMPTY_QUEUE(TN)(QUEUE(TN)* S) {
-    return S->front==NULL;
-}
-
-void FREE_QUEUE(TN)(QUEUE(TN)* S) {
-    assert(S!=NULL);
-
-    if (!EMPTY_QUEUE(TN)(S)) {
-        FREE(TN)(S->front);
-    }
-
-    free(S);
-}
+#include "queue.c"
