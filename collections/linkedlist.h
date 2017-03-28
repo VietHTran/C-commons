@@ -1,8 +1,8 @@
 //Generics linked list implementation
 #include "../generics.h"
-#define FREE(TYPE) CAT(free_lnode_, TYPE_NAME)
-#define NEW(TYPE) CAT(new_lnode_, TYPE_NAME)
-#define NODE(TYPE) CAT(lnode_,TYPE_NAME)
+#define FREE(TYPE_NAME) CAT(free_lnode_, TYPE_NAME)
+#define NEW(TYPE_NAME) CAT(new_lnode_, TYPE_NAME)
+#define NODE(TYPE_NAME) CAT(lnode_,TYPE_NAME)
 #include <stdlib.h>
 
 typedef struct NODE(TN) {
