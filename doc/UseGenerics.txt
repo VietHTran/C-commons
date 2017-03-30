@@ -1,4 +1,9 @@
-To use generics implementations, use "#define" to define T as the type used for the implementation and TN as the suffix name for the methods' and structure's name used for type T.
+Use generics implementations: 
+1. Use "#define" to define T as the type used for the implementation
+2. Use "#define" to define TN as the suffix name of the method and structure used by type T.
+3. Include generics file (linkedlist.h, stack.h, etc.).
+4. Use "#undef" to undefine T and TN.
+Note: to use string generics (char*), add "#define STR" before and "#undef STR" after step 3.
 
 Example: Use linked list for unsigned long long type
 
@@ -18,4 +23,5 @@ int main() {
 }
 
 -------------------------------------------------------
+
 

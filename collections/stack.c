@@ -12,7 +12,6 @@ void PUSH_STACK(TN)(STACK(TN)* S, T value) {
     assert(S != NULL);
 
     NODE(TN)* holder=NEW(TN)(value);
-    holder->value=value;
     holder->next=S->value;
     S->value=holder;
 
@@ -23,7 +22,14 @@ T POP_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL && S->value!=NULL);
 
     NODE(TN)* holder=S->value;
-    T val=holder->value;
+    T val;
+
+#ifdef STR
+    val=clone_str(holder->value);
+    free(holder->value);
+#else
+    val=holder->value;
+#endif
 
     S->value=S->value->next;
     free(holder);
@@ -34,7 +40,13 @@ T POP_STACK(TN)(STACK(TN)* S) {
 //gets the latest value of the stack without removing it
 T PEEK_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL && S->value!=NULL);
+
+#ifdef STR
+    return clone_str(S->value->value);
+#else
     return S->value->value;
+#endif
+
 }
 
 //checkes if stack is empty from the memory

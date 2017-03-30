@@ -1,9 +1,14 @@
 //Generics linked list implementation
-#include "../generics.h"
+
 #define FREE(TYPE_NAME) CAT(free_lnode_, TYPE_NAME)
 #define NEW(TYPE_NAME) CAT(new_lnode_, TYPE_NAME)
 #define NODE(TYPE_NAME) CAT(lnode_,TYPE_NAME)
 #include <stdlib.h>
+#include "../generics.h"
+
+#ifdef STR
+#include "../stringutils/strutils.h"
+#endif
 
 typedef struct NODE(TN) {
     T value;

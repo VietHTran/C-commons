@@ -27,8 +27,13 @@ T DEQUEUE(TN)(QUEUE(TN)* S) {
     assert(S!=NULL && S->front!=NULL);
 
     NODE(TN)* holder=S->front;
-    T val=holder->value;
-
+    T val;
+#ifdef STR
+    val=clone_str(holder->value);
+    free(holder->value);
+#else
+    val=holder->value;
+#endif
     S->front=S->front->next;
     free(holder);
 
@@ -38,7 +43,11 @@ T DEQUEUE(TN)(QUEUE(TN)* S) {
 //gets the oldest value in queue
 T PEEK_QUEUE(TN)(QUEUE(TN)* S) {
     assert(S!=NULL && S->front!=NULL);
+#ifdef STR
+    return clone_str(S->front->value);
+#else
     return S->front->value;
+#endif
 }
 
 //checks if queue is empty
