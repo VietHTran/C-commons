@@ -19,7 +19,7 @@ bool is_word(string str) {
     return true;
 }
 
-//Get str ends with prefix
+//Get str ends with suffix 
 bool ends_with_str(string str, string suffix) {
     assert(str!=NULL && suffix!=NULL);
     int strlength=len_str(str);
@@ -29,6 +29,15 @@ bool ends_with_str(string str, string suffix) {
         --suflength;
         --strlength;
         if (str[strlength]!=suffix[suflength]) {return false;}
+    }
+    return true;
+}
+
+//Checks if string only consists of digits
+bool is_digit(string str) {
+    assert(str!=NULL && str[0]!='\0');
+    for (int i=0;str[i]!='\0';i++) {
+        if (!(str[i]>=48 && str[i]<=57)) {return false;}
     }
     return true;
 }
