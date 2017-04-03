@@ -92,7 +92,7 @@ int index_of_n_str_sub(string str,string sub, int index) {
     while (str[str_i]!='\0' && sub[sub_i]!='\0') {
         if (str[str_i]==sub[sub_i]) {
             ++sub_i;
-            if (fallback==-1) {fallback=str_i+1;}
+            if (fallback==-1) {fallback=str_i;}
         } 
         else {
             sub_i=0;
