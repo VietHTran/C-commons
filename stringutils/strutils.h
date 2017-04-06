@@ -11,8 +11,14 @@
 //Duplicates string
 string clone_str(string str);
 
-//Get substring with (length) characters from index start
+//Gets substring with (length) characters from index start
 string substring(string str,int start,int length);
+
+//Returns a lowercase version of the string
+string lowercase(string str);
+
+//Returns a uppercase version of the string
+string uppercase(string str);
 
 #include "strutils.c"
 
