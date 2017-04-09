@@ -2,7 +2,7 @@
 #include <assert.h>
 
 //creates a new storage for list in the heap memory and returns its pointer
-//declaration: lst_<typename>*  mklst_<typename>();
+//declaration: lst_<typename>* mklst_<typename>();
 LIST(TN)* MAKE_LIST(TN)(){
     LIST(TN)* result=(LIST(TN)*)malloc(sizeof(LIST(TN)));
     result->size=0;

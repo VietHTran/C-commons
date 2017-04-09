@@ -18,8 +18,8 @@ Example: Use linked list for unsigned long long type
 
 int main() {
     unsigned long long answer_to_everything = 42;
-    lnode_ull* sample_node = new_lnode_ull(42);
-    free_lnode_ull(sample_node);
+    ll_ull* sample_node = mkll_ull(42);
+    fll_ull(sample_node);
     return 0;
 }
 
