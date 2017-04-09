@@ -4,6 +4,7 @@ Use generics implementations:
 3. Include generics file (linkedlist.h, stack.h, etc.).
 4. Use "#undef" to undefine T and TN.
 Note: to use string generics (char*), add "#define STR" before and "#undef STR" after step 3.
+Note: to use allocated memory in dynamic array (list.h) type (char*, int*, etc.), add "#define ALLOC_T" before and "#undef ALLOC_T" after step 3.
 
 Example: Use linked list for unsigned long long type
 

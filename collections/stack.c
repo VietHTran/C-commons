@@ -1,23 +1,26 @@
 //stack's methods' definitions
 
 //creates a new storage for stack data structure in the heap memory and returns its pointer
-STACK(TN)* NEW_STACK(TN)(){
+//declaration: stk_<typename>* mkstk_<typename>();
+STACK(TN)* MAKE_STACK(TN)(){
     STACK(TN)* S=(STACK(TN)*)malloc(sizeof(STACK(TN)));
     S->value=NULL;
     return S;
 }
 
 //pushes new value into stack
+//declaration: void pstk_<typename>(stk_<typename>* S, <type> value);
 void PUSH_STACK(TN)(STACK(TN)* S, T value) {
     assert(S != NULL);
 
-    NODE(TN)* holder=NEW(TN)(value);
+    NODE(TN)* holder=MAKE(TN)(value);
     holder->next=S->value;
     S->value=holder;
 
 }
 
 //removes the latest value from the stack
+//declaration: <type> rmstk_<typename>(stk_<typename>* S);
 T POP_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL && S->value!=NULL);
 
@@ -38,6 +41,7 @@ T POP_STACK(TN)(STACK(TN)* S) {
 }
 
 //gets the latest value of the stack without removing it
+//declaration: <type> pkstk_<typename>(stk_<typename>* S);
 T PEEK_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL && S->value!=NULL);
 
@@ -50,11 +54,13 @@ T PEEK_STACK(TN)(STACK(TN)* S) {
 }
 
 //checkes if stack is empty from the memory
+//declaration: bool estk_<typename>(stk_<typename>* S);
 bool EMPTY_STACK(TN)(STACK(TN)* S) {
     return S->value==NULL;
 }
 
 //frees stack and its elements
+//declaration: void fstk_<typename>(stk_<typename>* S)
 void FREE_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL);
 

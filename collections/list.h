@@ -6,12 +6,12 @@
 #define LIST(TYPE_NAME) CAT(lst_,TYPE_NAME)
 #define MAKE_LIST(TYPE_NAME) CAT(mklst_,TYPE_NAME)
 #define FREE_LIST(TYPE_NAME) CAT(flst_, TYPE_NAME)
-#define AT_LIST(TYPE_NAME) CAT(alst_,TYPE_NAME)
+#define GET_LIST(TYPE_NAME) CAT(glst_,TYPE_NAME)
 #define SET_LIST(TYPE_NAME) CAT(slst_,TYPE_NAME)
-#define APPEND_LIST(TYPE_NAME) CAT(plst_,TYPE_NAME)
+#define APPEND_LIST(TYPE_NAME) CAT(alst_,TYPE_NAME)
 #define INSERT_LIST(TYPE_NAME) CAT(ilst_,TYPE_NAME)
 #define REMOVE_LIST(TYPE_NAME) CAT(rmlst_,TYPE_NAME)
-#define POP_LIST(TYPE_NAME) CAT(olst_,TYPE_NAME)
+#define POP_LIST(TYPE_NAME) CAT(plst_,TYPE_NAME)
 #define COUNT_LIST(TYPE_NAME) CAT(clst_,TYPE_NAME)
 
 //Dynamic array definitions
@@ -31,14 +31,14 @@ void FREE_LIST(TN)(LIST(TN)* L);
 
 //gets value from list at specified index
 //declaration: <type> alst_<typename>(lst_<typename>* L, int index);
-T AT_LIST(TN)(LIST(TN)* L, int index);
+T GET_LIST(TN)(LIST(TN)* L, int index);
 
 //sets value from list at specified index
 //declaration: void slst_<typename>(lst_<typename>* L, <type> value, int index);
 void SET_LIST(TN)(LIST(TN)* L, T value, int index);
 
 //appends new value into list
-//declaration: void plst_<typename>(lst_<typename>* L, <type> value);
+//declaration: void alst_<typename>(lst_<typename>* L, <type> value);
 void APPEND_LIST(TN)(LIST(TN)* L, T value);
 
 //inserts new value into list at specified index
@@ -50,7 +50,7 @@ void INSERT_LIST(TN)(LIST(TN)* L, T value, int index);
 T REMOVE_LIST(TN)(LIST(TN)* L, int index);
 
 //removes and returns last value in the list
-//declaration: <type> olst_<typename>(lst_<typename>* L);
+//declaration: <type> plst_<typename>(lst_<typename>* L);
 T POP_LIST(TN)(LIST(TN)* L);
 
 //returns the number of elements in list

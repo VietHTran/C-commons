@@ -1,32 +1,35 @@
 //queue's methods' definition
 
 //creates a new storage for queue data structure in the heap memory and returns its pointer
-QUEUE(TN)* NEW_QUEUE(TN)(){
-    QUEUE(TN)* S=(QUEUE(TN)*)malloc(sizeof(QUEUE(TN)));
-    S->tail=NULL;
-    S->front=NULL;
-    return S;
+//declaration: q_<typename>* mkq_<typname>(); 
+QUEUE(TN)* MAKE_QUEUE(TN)(){
+    QUEUE(TN)* Q=(QUEUE(TN)*)malloc(sizeof(QUEUE(TN)));
+    Q->tail=NULL;
+    Q->front=NULL;
+    return Q;
 }
 
 //pushes new value into queue
-void ENQUEUE(TN)(QUEUE(TN)* S, T value) {
-    assert(S != NULL);
+//declaration: void enq_<typename>(q_<typename>* Q, <type> value);
+void ENQUEUE(TN)(QUEUE(TN)* Q, T value) {
+    assert(Q != NULL);
 
-    NODE(TN)* holder=NEW(TN)(value);
+    NODE(TN)* holder=MAKE(TN)(value);
 
-    if (S->front==NULL) {
-        S->front=holder;
+    if (Q->front==NULL) {
+        Q->front=holder;
     } else {
-        S->tail->next=holder;
+        Q->tail->next=holder;
     }
-    S->tail=holder;
+    Q->tail=holder;
 }
 
 //removes the oldest value from queue and returns it
-T DEQUEUE(TN)(QUEUE(TN)* S) {
-    assert(S!=NULL && S->front!=NULL);
+//declaration: <type> deq_<typename>(q_<typename>* Q);
+T DEQUEUE(TN)(QUEUE(TN)* Q) {
+    assert(Q!=NULL && Q->front!=NULL);
 
-    NODE(TN)* holder=S->front;
+    NODE(TN)* holder=Q->front;
     T val;
 #ifdef STR
     val=clone_str(holder->value);
@@ -34,34 +37,37 @@ T DEQUEUE(TN)(QUEUE(TN)* S) {
 #else
     val=holder->value;
 #endif
-    S->front=S->front->next;
+    Q->front=Q->front->next;
     free(holder);
 
     return val;
 }
 
 //gets the oldest value in queue
-T PEEK_QUEUE(TN)(QUEUE(TN)* S) {
-    assert(S!=NULL && S->front!=NULL);
+//declaration: <type> pkq_<typename>(q_<typename>* Q);
+T PEEK_QUEUE(TN)(QUEUE(TN)* Q) {
+    assert(Q!=NULL && Q->front!=NULL);
 #ifdef STR
-    return clone_str(S->front->value);
+    return clone_str(Q->front->value);
 #else
-    return S->front->value;
+    return Q->front->value;
 #endif
 }
 
 //checks if queue is empty
-bool EMPTY_QUEUE(TN)(QUEUE(TN)* S) {
-    return S->front==NULL;
+//declaration: bool eq_<typename>(q_<typename>* Q);
+bool EMPTY_QUEUE(TN)(QUEUE(TN)* Q) {
+    return Q->front==NULL;
 }
 
 //frees queue and its elements
-void FREE_QUEUE(TN)(QUEUE(TN)* S) {
-    assert(S!=NULL);
+//declaration: void fq_<typename>(q_<typename>* Q);
+void FREE_QUEUE(TN)(QUEUE(TN)* Q) {
+    assert(Q!=NULL);
 
-    if (!EMPTY_QUEUE(TN)(S)) {
-        FREE(TN)(S->front);
+    if (!EMPTY_QUEUE(TN)(Q)) {
+        FREE(TN)(Q->front);
     }
 
-    free(S);
+    free(Q);
 }

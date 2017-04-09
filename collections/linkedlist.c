@@ -1,14 +1,15 @@
 //linked list's methods' definitions
 
 //Create a new node data storage in the memory heap and return its pointer
-NODE(TN)* NEW(TN)(T val) {
+//declaration: ll_<typename>* mkll_<typename>(<type> value);
+NODE(TN)* MAKE(TN)(T value) {
     NODE(TN)* holder = (NODE(TN)*)malloc(sizeof(NODE(TN)));
     T added_val;
 
 #ifdef STR
-    added_val=clone_str(val);
+    added_val=clone_str(value);
 #else
-    added_val=val;
+    added_val=value;
 #endif
 
     holder->value=added_val;
@@ -17,11 +18,13 @@ NODE(TN)* NEW(TN)(T val) {
 }
 
 //Free a chain of connected nodes in the memory
-void FREE(TN)(NODE(TN)* l) {
-    NODE(TN)* holder=l;
+//declaration: void fll_<typename>(ll_<typename>* L)
+void FREE(TN)(NODE(TN)* L) {
+    NODE(TN)* holder=L;
     while (holder!=NULL) {
         NODE(TN)* i=holder;
         holder=holder->next;
+
 #ifdef STR
         free(i->value);
 #endif

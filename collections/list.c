@@ -27,8 +27,8 @@ void FREE_LIST(TN)(LIST(TN)* L) {
 }
 
 //gets value from list at specified index
-//declaration: <type> alst_<typename>(lst_<typename>* L, int index);
-T AT_LIST(TN)(LIST(TN)* L, int index) {
+//declaration: <type> glst_<typename>(lst_<typename>* L, int index);
+T GET_LIST(TN)(LIST(TN)* L, int index) {
     assert(L!=NULL);
     assert(L->size>index);
     assert(index>=0);
@@ -50,7 +50,7 @@ void SET_LIST(TN)(LIST(TN)* L, T value, int index) {
 }
 
 //appends new value into list
-//declaration: void plst_<typename>(lst_<typename>* L, <type> value);
+//declaration: void alst_<typename>(lst_<typename>* L, <type> value);
 void APPEND_LIST(TN)(LIST(TN)* L, T value) {
     assert(L!=NULL);
     ++L->size;
@@ -94,7 +94,7 @@ T REMOVE_LIST(TN)(LIST(TN)* L, int index) {
 }
 
 //removes and returns last value in the list
-//declaration: <type> olst_<typename>(lst_<typename>* L);
+//declaration: <type> plst_<typename>(lst_<typename>* L);
 T POP_LIST(TN)(LIST(TN)* L) {
     assert(L!=NULL);
     assert(L->size>0);
