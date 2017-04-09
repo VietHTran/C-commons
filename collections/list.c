@@ -56,14 +56,13 @@ void APPEND_LIST(TN)(LIST(TN)* L, T value) {
     ++L->size;
     L->arr=(T*)realloc(L->arr,L->size*sizeof(T));
     L->arr[L->size-1]=value;
-    L->arr[L->size]='\0';
 }
 
 //inserts new value into list at specified index
 //declaration: void ilst_<typename>(lst_<typename>* L, <type> value, int index);
 void INSERT_LIST(TN)(LIST(TN)* L, T value, int index) {
     assert(L!=NULL);
-    assert(L->size>index);
+    assert(L->size>=index);
     assert(index>=0);
     ++L->size;
     L->arr=(T*)realloc(L->arr,L->size*sizeof(T));
@@ -72,8 +71,7 @@ void INSERT_LIST(TN)(LIST(TN)* L, T value, int index) {
         L->arr[i]=L->arr[i-1];
     }
 
-    l->arr[index]=value;
-    L->arr[L->size]='\0';
+    L->arr[index]=value;
 }
 
 //removes and returns value from list at specified index
@@ -99,8 +97,7 @@ T REMOVE_LIST(TN)(LIST(TN)* L, int index) {
 //declaration: <type> olst_<typename>(lst_<typename>* L);
 T POP_LIST(TN)(LIST(TN)* L) {
     assert(L!=NULL);
-    assert(L->size>index);
-    assert(index>=0);
+    assert(L->size>0);
 
     --L->size;
     T value=L->arr[L->size];

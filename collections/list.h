@@ -1,6 +1,7 @@
 //Generics dynamic array implementation
 #include <stdlib.h>
 #include <stdbool.h>
+#include "../generics.h"
 
 #define LIST(TYPE_NAME) CAT(lst_,TYPE_NAME)
 #define MAKE_LIST(TYPE_NAME) CAT(mklst_,TYPE_NAME)
