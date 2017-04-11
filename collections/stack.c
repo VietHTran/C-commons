@@ -28,7 +28,7 @@ T POP_STACK(TN)(STACK(TN)* S) {
     T val;
 
 #ifdef STR
-    val=clone_str(holder->value);
+    val=cpstr(holder->value);
     free(holder->value);
 #else
     val=holder->value;
@@ -46,7 +46,7 @@ T PEEK_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL && S->value!=NULL);
 
 #ifdef STR
-    return clone_str(S->value->value);
+    return cpstr(S->value->value);
 #else
     return S->value->value;
 #endif

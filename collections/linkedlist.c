@@ -7,7 +7,7 @@ NODE(TN)* MAKE(TN)(T value) {
     T added_val;
 
 #ifdef STR
-    added_val=clone_str(value);
+    added_val=cpstr(value);
 #else
     added_val=value;
 #endif

@@ -3,20 +3,20 @@
 #include "strinfo.h"
 
 //Duplicates string
-string clone_str(string str) {
+string cpstr(string str) {
     assert(str[0]!='\0');
-    int length=len_str(str)+1;
+    int length=lenstr(str)+1;
     string return_str=(string)malloc(length*sizeof(char));
     strcpy(return_str,str);
     return return_str;    
 }
 
-//Gets substring with length characters from index start
-//This function is can be called by substring function with the same signature
-string substring3(string str, int start, int length) {
+//Gets substr with length characters from index start
+//This function is can be called by substr function with the same signature
+string substr3(string str, int start, int length) {
     assert( str[0]!='\0' && 
             start>=0 && 
-            start+length<=len_str(str) && 
+            start+length<=lenstr(str) && 
             start<length);
     string holder=(string)malloc((length+1)*sizeof(char));
     strncpy(holder,&str[start],length);
@@ -25,10 +25,10 @@ string substring3(string str, int start, int length) {
 }
 
 //Gets substring from index start to the end to str
-//This function is can be called by substring function with the same signature
-string substring2(string str,int start) {
+//This function is can be called by substr function with the same signature
+string substr2(string str,int start) {
     assert(start>=0 && str[0]!='\0');
-    int length=len_str(str);
+    int length=lenstr(str);
     assert(start<length);
     int holder_length=length-start;
     string holder=(string)malloc((holder_length+1)*sizeof(char));
@@ -39,7 +39,7 @@ string substring2(string str,int start) {
 
 //Returns a lower case version of the string
 string lowercase(string str) {
-    string result=clone_str(str);
+    string result=cpstr(str);
     for (int i=0;str[i]!='\0';i++) {
         int ord=(int)result[i];
         if (ord>=65 && ord<=90) {
@@ -51,7 +51,7 @@ string lowercase(string str) {
 
 //Returns a uppercase version of the string
 string uppercase(string str) {
-    string result=clone_str(str);
+    string result=cpstr(str);
     for (int i=0;str[i]!='\0';i++) {
         int ord=(int)result[i];
         if (ord>=97 && ord<=122) {

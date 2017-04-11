@@ -32,7 +32,7 @@ T DEQUEUE(TN)(QUEUE(TN)* Q) {
     NODE(TN)* holder=Q->front;
     T val;
 #ifdef STR
-    val=clone_str(holder->value);
+    val=cpstr(holder->value);
     free(holder->value);
 #else
     val=holder->value;
@@ -48,7 +48,7 @@ T DEQUEUE(TN)(QUEUE(TN)* Q) {
 T PEEK_QUEUE(TN)(QUEUE(TN)* Q) {
     assert(Q!=NULL && Q->front!=NULL);
 #ifdef STR
-    return clone_str(Q->front->value);
+    return cpstr(Q->front->value);
 #else
     return Q->front->value;
 #endif
