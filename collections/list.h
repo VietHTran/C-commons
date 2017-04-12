@@ -13,6 +13,7 @@
 #define REMOVE_LIST(TYPE_NAME) CAT(rmlst_,TYPE_NAME)
 #define POP_LIST(TYPE_NAME) CAT(plst_,TYPE_NAME)
 #define COUNT_LIST(TYPE_NAME) CAT(clst_,TYPE_NAME)
+#define SLICE_LIST(TYPE_NAME) CAT(slclst_,TYPE_NAME)
 
 //Dynamic array definitions
 //type: lst_<typename>
@@ -56,5 +57,11 @@ T POP_LIST(TN)(LIST(TN)* L);
 //returns the number of elements in list
 //declaration: int clst_<typename>(lst_<typename>* L);
 int COUNT_LIST(TN)(LIST(TN)* L);
+
+//returns an allocated array of pointers to specified elements in the list
+//elements are chosen based on index from start (inclusive) to end (exclusive) with
+//steps increment
+//declaration: <type>* slclst_<typename>(lst_<typename>* L,int start,int end,int steps);
+T** SLICE_LIST(TN)(LIST(TN)* L,int start,int end,int steps);
 
 #include "list.c"

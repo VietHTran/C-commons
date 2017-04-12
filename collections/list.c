@@ -113,3 +113,36 @@ int COUNT_LIST(TN)(LIST(TN)* L) {
     return L->size;
 }
 
+//returns an allocated array of pointers to specified elements in the list
+//elements are chosen based on index from start (inclusive) to end (exclusive) with
+//steps increment
+//declaration: <type>* slclst_<typename>(lst_<typename>* L,int start,int end,int steps);
+T** SLICE_LIST(TN)(LIST(TN)* L,int start,int end,int steps){
+    assert(L!=NULL);
+    assert(end>=-1  && end<=L->size);
+    assert(start>=0 && start<L->size);
+    int length=end-start,arr_index=0;
+    T** arr;
+    if (length>0) {
+        assert(steps>0);
+        length/=steps;    
+        arr=(T**)malloc((length+1)*sizeof(T*));
+        for (int i=start;i<end;i+=steps) {
+            arr[arr_index]=&L->arr[i];
+            ++arr_index;
+        }
+    } else if (length<0) {
+        assert(steps<0);
+        length/=steps;
+        arr_index=length-1;
+        arr=(T**)malloc((length+1)*sizeof(T*));
+        for (int i=start;i>end;i+=steps) {
+            arr[arr_index]=&L->arr[i];
+            --arr_index;
+        }
+    }
+    arr[length]=NULL;
+    return arr;
+}
+
+
