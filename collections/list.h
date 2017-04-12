@@ -61,7 +61,7 @@ int COUNT_LIST(TN)(LIST(TN)* L);
 //returns an allocated array of pointers to specified elements in the list
 //elements are chosen based on index from start (inclusive) to end (exclusive) with
 //steps increment
-//declaration: <type>* slclst_<typename>(lst_<typename>* L,int start,int end,int steps);
+//declaration: <type>** slclst_<typename>(lst_<typename>* L,int start,int end,int steps);
 T** SLICE_LIST(TN)(LIST(TN)* L,int start,int end,int steps);
 
 #include "list.c"
