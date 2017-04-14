@@ -6,7 +6,10 @@
 #include "../stringutils/strgeneral.h"
 
 //return string of current directory
-string pwd();
+//X_STR: char* type
+#define pwd(X_STR) do {                                         \
+    assert(getcwd(X_STR,sizeof(X_STR))!=NULL);                  \
+} while (0)
 
 #include "cshell.c"
 
