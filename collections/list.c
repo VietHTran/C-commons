@@ -114,14 +114,17 @@ int COUNT_LIST(TN)(LIST(TN)* L) {
     return L->size;
 }
 
+//--------Preprocessor for slclst functions----------------------
+#define GET_PTR_SLCLST() do {                                   \
+    arr_ptr[arr_index]=&L->arr[i];                              \
+    ++arr_index;                                                \
+} while (0)
+//---------------------------------------------------------------
+
 //returns an allocated array of pointers to specified elements in the list
 //elements are chosen based on index from start (inclusive) to end (exclusive) with
 //steps increment
 //declaration: <type>** slclst_<typename>(lst_<typename>* L,int start,int end,int steps);
-#define GET_PTR() do {                      \
-    arr_ptr[arr_index]=&L->arr[i];          \
-    ++arr_index;                            \
-} while (0)
 T** SLICE_LIST(TN)(LIST(TN)* L,int start,int end,int steps){
     assert(L!=NULL);
     assert(end>=-1  && end<=L->size);
@@ -131,17 +134,14 @@ T** SLICE_LIST(TN)(LIST(TN)* L,int start,int end,int steps){
     length/=steps;
     T** arr_ptr=(T**)malloc((length+1)*sizeof(T*));
     if (length==0) {return NULL;}
-    
     if (is_forward) {
         assert(steps>0);
-        for (int i=start;i<end;i+=steps) {GET_PTR();}
+        for (int i=start;i<end;i+=steps) {GET_PTR_SLCLST();}
     } else {
         assert(steps<0);
-        for (int i=start;i>end;i+=steps) {GET_PTR();}
+        for (int i=start;i>end;i+=steps) {GET_PTR_SLCLST();}
     }
-    
     arr_ptr[length]=NULL;
     return arr_ptr;
 }
-
 
