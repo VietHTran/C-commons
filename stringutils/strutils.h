@@ -19,6 +19,9 @@ string substr3(string str,int start,int length);
 //This function is can be called by substr function with the same signature
 string substr2(string str,int start);
 
+//Return an allocated, non-whitespace version of string str
+string rmspace(string str);
+
 //Returns a lowercase version of the string
 string lowercase(string str);
 

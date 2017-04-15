@@ -1,6 +1,8 @@
 #include <assert.h>
 #include <string.h>
 #include "strinfo.h"
+#define LOOP_STR(X,I) for (int I=0;X[I]!='\0';++I)
+
 
 //Duplicates string
 string cpstr(string str) {
@@ -35,6 +37,21 @@ string substr2(string str,int start) {
     strncpy(holder,&str[start],length-start);
     holder[holder_length]='\0';
     return holder;
+}
+
+//Return an allocated, non-whitespace version of string str
+string rmspace(string str) {
+    assert(str!='\0');
+    string new_str=cpstr(str);
+    int cur_index=-1;
+    LOOP_STR(str,i) {
+        if (str[i]==' ' || str[i]=='\n' || str[i]=='\t') {
+            continue;
+        }
+        new_str[++cur_index]=str[i];
+    }
+    new_str[++cur_index]='\0';
+    return new_str;
 }
 
 //Returns a lower case version of the string
