@@ -7,6 +7,7 @@
 #define QUEUE(TYPE_NAME) CAT(q_,TYPE_NAME)
 #define MAKE_QUEUE(TYPE_NAME) CAT(mkq_, TYPE_NAME)
 #define FREE_QUEUE(TYPE_NAME) CAT(fq_, TYPE_NAME)
+#define ALLOC_FREE_QUEUE(TYPE_NAME) CAT(afq_, TYPE_NAME)
 #define DEQUEUE(TYPE_NAME) CAT(deq_, TYPE_NAME)
 #define ENQUEUE(TYPE_NAME) CAT(enq_, TYPE_NAME)
 #define PEEK_QUEUE(TYPE_NAME) CAT(pkq_, TYPE_NAME)
@@ -41,8 +42,12 @@ T PEEK_QUEUE(TN)(QUEUE(TN)* Q);
 //declaration: bool eq_<typename>(q_<typename>* Q);
 bool EMPTY_QUEUE(TN)(QUEUE(TN)* Q);
 
-//frees queue and its elements
+//frees queue 
 //declaration: void fq_<typename>(q_<typename>* Q);
 void FREE_QUEUE(TN)(QUEUE(TN)* Q);
+
+//frees queue and its elements which uses allocated memory
+//declaration: void afq_<typename>(q_<typename>* Q);
+void ALLOC_FREE_QUEUE(TN)(QUEUE(TN)* Q);
 
 #include "queue.c"

@@ -28,18 +28,11 @@ void ENQUEUE(TN)(QUEUE(TN)* Q, T value) {
 //declaration: <type> deq_<typename>(q_<typename>* Q);
 T DEQUEUE(TN)(QUEUE(TN)* Q) {
     assert(Q!=NULL && Q->front!=NULL);
-
     NODE(TN)* holder=Q->front;
     T val;
-#ifdef STR
-    val=cpstr(holder->value);
-    free(holder->value);
-#else
     val=holder->value;
-#endif
     Q->front=Q->front->next;
     free(holder);
-
     return val;
 }
 
@@ -47,11 +40,7 @@ T DEQUEUE(TN)(QUEUE(TN)* Q) {
 //declaration: <type> pkq_<typename>(q_<typename>* Q);
 T PEEK_QUEUE(TN)(QUEUE(TN)* Q) {
     assert(Q!=NULL && Q->front!=NULL);
-#ifdef STR
-    return cpstr(Q->front->value);
-#else
     return Q->front->value;
-#endif
 }
 
 //checks if queue is empty
@@ -64,10 +53,23 @@ bool EMPTY_QUEUE(TN)(QUEUE(TN)* Q) {
 //declaration: void fq_<typename>(q_<typename>* Q);
 void FREE_QUEUE(TN)(QUEUE(TN)* Q) {
     assert(Q!=NULL);
-
     if (!EMPTY_QUEUE(TN)(Q)) {
         FREE(TN)(Q->front);
     }
-
     free(Q);
 }
+
+#ifdef ALLOC_T //T uses alloced memory
+
+//frees queue and its elements which uses allocated memory
+//declaration: void afq_<typename>(q_<typename>* Q);
+void ALLOC_FREE_QUEUE(TN)(QUEUE(TN)* Q) {
+    assert(Q!=NULL);
+    if (!EMPTY_QUEUE(TN)(Q)) {
+        ALLOC_FREE(TN)(Q->front);
+    }
+    free(Q);
+
+}
+
+#endif

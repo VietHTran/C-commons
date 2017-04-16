@@ -26,13 +26,7 @@ T POP_STACK(TN)(STACK(TN)* S) {
 
     NODE(TN)* holder=S->value;
     T val;
-
-#ifdef STR
-    val=cpstr(holder->value);
-    free(holder->value);
-#else
     val=holder->value;
-#endif
 
     S->value=S->value->next;
     free(holder);
@@ -45,21 +39,17 @@ T POP_STACK(TN)(STACK(TN)* S) {
 T PEEK_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL && S->value!=NULL);
 
-#ifdef STR
-    return cpstr(S->value->value);
-#else
     return S->value->value;
-#endif
-
 }
 
 //checkes if stack is empty from the memory
 //declaration: bool estk_<typename>(stk_<typename>* S);
 bool EMPTY_STACK(TN)(STACK(TN)* S) {
+    assert(S!=NULL);
     return S->value==NULL;
 }
 
-//frees stack and its elements
+//frees stack 
 //declaration: void fstk_<typename>(stk_<typename>* S)
 void FREE_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL);
@@ -73,8 +63,19 @@ void FREE_STACK(TN)(STACK(TN)* S) {
     free(S);
 }
 
+#ifdef ALLOC_T //T used allocated type
 
+//frees stack and its elements which uses allocated memory
+//declaration: void afstk_<typename>(stk_<typename>* S)
+void ALLOC_FREE_STACK(TN)(STACK(TN)* S){
+    assert(S!=NULL);
 
+    if (EMPTY_STACK(TN)(S)) {
+        free(S);
+        return;
+    }
+    ALLOC_FREE(TN)(S->value);
+    free(S);
+}
 
-
-
+#endif

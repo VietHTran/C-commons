@@ -1,8 +1,6 @@
 #include <assert.h>
 #include <string.h>
 #include "strinfo.h"
-#define LOOP_STR(X,I) for (int I=0;X[I]!='\0';++I)
-
 
 //Duplicates string
 string cpstr(string str) {
@@ -44,7 +42,7 @@ string rmspace(string str) {
     assert(str!='\0');
     string new_str=cpstr(str);
     int cur_index=-1;
-    LOOP_STR(str,i) {
+    ITR_STR(str,i) {
         if (str[i]==' ' || str[i]=='\n' || str[i]=='\t') {
             continue;
         }
@@ -57,7 +55,7 @@ string rmspace(string str) {
 //Returns a lower case version of the string
 string lowercase(string str) {
     string result=cpstr(str);
-    for (int i=0;str[i]!='\0';i++) {
+    ITR_STR(str,i) {
         int ord=(int)result[i];
         if (ord>=65 && ord<=90) {
             result[i]=(char)(ord+32);
@@ -69,7 +67,7 @@ string lowercase(string str) {
 //Returns a uppercase version of the string
 string uppercase(string str) {
     string result=cpstr(str);
-    for (int i=0;str[i]!='\0';i++) {
+    ITR_STR(str,i) {
         int ord=(int)result[i];
         if (ord>=97 && ord<=122) {
             result[i]=(char)(ord-32);

@@ -9,7 +9,7 @@ int lenstr(string str) {
 //Checks if contains only alphabetic characters
 bool iwrd(string str) {
     assert(str!=NULL);
-    for (int i=0;str[i]!='\0';i++) {
+    ITR_STR(str,i) {
         int ascii_num=(int)str[i];
         if (!((ascii_num>=65 && ascii_num<=90) 
                 || (ascii_num>=97 && ascii_num<=122))) {
@@ -36,7 +36,7 @@ bool sffxstr(string str, string suffix) {
 //Checks if string only consists of digits
 bool idgt(string str) {
     assert(str!=NULL && str[0]!='\0');
-    for (int i=0;str[i]!='\0';i++) {
+    ITR_STR(str,i) {
         if (!(str[i]>=48 && str[i]<=57)) {return false;}
     }
     return true;
@@ -47,7 +47,7 @@ bool idgt(string str) {
 //Can be used by calling istr with the same signature
 int istr_basic(string str, char c) {
     assert(str!=NULL);
-    for (int i=0;str[i]!='\0';i++) {
+    ITR_STR(str,i) {
         if (str[i]==c) {return i;}
     }
     return -1;

@@ -7,6 +7,7 @@
 #define STACK(TYPE_NAME) CAT(stk_,TYPE_NAME)
 #define MAKE_STACK(TYPE_NAME) CAT(mkstk_, TYPE_NAME)
 #define FREE_STACK(TYPE_NAME) CAT(fstk_, TYPE_NAME)
+#define ALLOC_FREE_STACK(TYPE_NAME) CAT(afstk_, TYPE_NAME)
 #define PUSH_STACK(TYPE_NAME) CAT(pstk_, TYPE_NAME)
 #define POP_STACK(TYPE_NAME) CAT(rmstk_, TYPE_NAME)
 #define PEEK_STACK(TYPE_NAME) CAT(pkstk_, TYPE_NAME)
@@ -40,8 +41,12 @@ T PEEK_STACK(TN)(STACK(TN)* S);
 //declaration: bool estk_<typename>(stk_<typename>* S);
 bool EMPTY_STACK(TN)(STACK(TN)* S);
 
-//frees stack and its elements
+//frees stack
 //declaration: void fstk_<typename>(stk_<typename>* S)
 void FREE_STACK(TN)(STACK(TN)* S);
+
+//frees stack and its elements which uses allocated memory
+//declaration: void afstk_<typename>(stk_<typename>* S)
+void ALLOC_FREE_STACK(TN)(STACK(TN)* S);
 
 #include "stack.c"
