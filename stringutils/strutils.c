@@ -8,6 +8,7 @@ string cpstr(string str) {
     int length=lenstr(str)+1;
     string return_str=(string)malloc(length*sizeof(char));
     strcpy(return_str,str);
+    return_str[length-1]='\0';
     return return_str;    
 }
 

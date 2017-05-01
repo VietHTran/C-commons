@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "../generics.h"
 
+#define ALLOC_FREE_LIST(TYPE_NAME) CAT(aflst_, TYPE_NAME)
 #define LIST(TYPE_NAME) CAT(lst_,TYPE_NAME)
 #define MAKE_LIST(TYPE_NAME) CAT(mklst_,TYPE_NAME)
 #define FREE_LIST(TYPE_NAME) CAT(flst_, TYPE_NAME)
@@ -14,6 +15,10 @@
 #define POP_LIST(TYPE_NAME) CAT(plst_,TYPE_NAME)
 #define COUNT_LIST(TYPE_NAME) CAT(clst_,TYPE_NAME)
 #define SLICE_LIST(TYPE_NAME) CAT(slclst_,TYPE_NAME)
+
+//frees list and its elements that use heap memory
+//declaration: void aflst_<typename>(lst_<typname>* L);
+void ALLOC_FREE_LIST(TN)(LIST(TN)* L);
 
 //Dynamic array definitions
 //type: lst_<typename>

@@ -2,6 +2,17 @@
 #include <assert.h>
 #include <stdbool.h>
 
+//frees list and its elements that use heap memory
+//declaration: void aflst_<typename>(lst_<typname>* L);
+void ALLOC_FREE_LIST(TN)(LIST(TN)* L) {
+    assert(L!=NULL);
+    for (int i=0;i<L->size;i++) {
+        free(L->arr[i]);
+    }
+    free(L->arr);
+    free(L);
+}
+
 //creates a new storage for list in the heap memory and returns its pointer
 //declaration: lst_<typename>* mklst_<typename>();
 LIST(TN)* MAKE_LIST(TN)(){
@@ -16,13 +27,6 @@ LIST(TN)* MAKE_LIST(TN)(){
 //declaration: void flst_<typename>(lst_<typname>* L);
 void FREE_LIST(TN)(LIST(TN)* L) {
     assert(L!=NULL);
-
-#ifdef ALLOC_T //T uses allocated memory
-    for (int i=0;i<L->size;i++) {
-        free(L->arr[i]);
-    }
-#endif
-
     free(L->arr);
     free(L);
 }
