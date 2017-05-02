@@ -17,6 +17,9 @@
 //Duplicates string
 string cpstr(string str);
 
+//Return Roman representation of an integer
+void inttrome(int num,string result,int length);
+
 //Returns a lowercase version of the string
 string lowercase(string str);
 
