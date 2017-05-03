@@ -68,7 +68,7 @@ void inttrome(int num,string result,int buffer) {
 ULL rometint(string rnum,int buffer) {
     assert(rnum!=NULL);
     assert(buffer>0);
-    int rchar[26];
+    int rchar[26]={[0 ... 25]=0};
     rchar[(int)'I'-65]=1;    
     rchar[(int)'V'-65]=5;    
     rchar[(int)'X'-65]=10;    
