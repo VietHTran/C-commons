@@ -64,8 +64,8 @@ void inttrome(int num,string result,int buffer) {
     result[++current_index]='\0';
 }
 
-//Return integer representation of a Roman numeral
-ULL rometint(string rnum,int buffer) {
+//Return unsigned long long representation of a Roman numeral
+ULL rometull(string rnum,int buffer) {
     assert(rnum!=NULL);
     assert(buffer>0);
     int rchar[26]={[0 ... 25]=0};

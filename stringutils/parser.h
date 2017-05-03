@@ -12,8 +12,8 @@
 //Return Roman representation of an integer
 void inttrome(int num,string result,int buffer);
 
-//Return integer representation of a Roman numeral
-ULL rometint(string rnum,int buffer);
+//Return unsigned long long representation of a Roman numeral
+ULL rometull(string rnum,int buffer);
 
 #include "parser.c"
 #undef ULL
