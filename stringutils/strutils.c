@@ -16,67 +16,6 @@ string cpstr(string str) {
     return return_str;    
 }
 
-//Return Roman representation of an integer
-void inttrome(int num,string result,int length) {
-    assert(num>0); //num must be positive
-    assert(result!=NULL);
-    assert(length<=MAX_CHARS);
-    int current_index=-1;
-    while (num!=0) {
-        if (current_index==length) {
-            perror("String limit exceeded");
-            exit(1);
-        }
-        if (num>=1000) {
-            num-=1000;
-            result[++current_index]='M';
-        } else if (num>=900) {
-            num-=900;
-            result[++current_index]='C';
-            result[++current_index]='M';
-        } else if (num>=500) {
-            num-=500;
-            result[++current_index]='D';
-        } else if (num>=400) {
-            num-=400;
-            result[++current_index]='C';
-            result[++current_index]='D';
-        } else if (num>=100) {
-            num-=100;
-            result[++current_index]='C';
-        } else if (num>=90) {
-            num-=90;
-            result[++current_index]='X';
-            result[++current_index]='C';
-        } else if (num>=50) {
-            num-=50;
-            result[++current_index]='L';
-        } else if (num>=40) {
-            num-=40;
-            result[++current_index]='X';
-            result[++current_index]='L';
-        } else if (num>=10) {
-            num-=10;
-            result[++current_index]='X';
-        } else if (num>=9) {
-            num-=9;
-            result[++current_index]='I';
-            result[++current_index]='X';
-        } else if (num>=5) {
-            num-=5;
-            result[++current_index]='V';
-        } else if (num>=4) {
-            num-=4;
-            result[++current_index]='I';
-            result[++current_index]='V';
-        } else if (num>=1) {
-            num--;
-            result[++current_index]='I';
-        }
-    }
-    result[++current_index]='\0';
-}
-
 //Gets substr with length characters from index start
 //This function is can be called by substr function with the same signature
 string substr3(string str, int start, int length) {
