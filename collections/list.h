@@ -16,16 +16,16 @@
 #define COUNT_LIST(TYPE_NAME) CAT(clst_,TYPE_NAME)
 #define SLICE_LIST(TYPE_NAME) CAT(slclst_,TYPE_NAME)
 
-//frees list and its elements that use heap memory
-//declaration: void aflst_<typename>(lst_<typname>* L);
-void ALLOC_FREE_LIST(TN)(LIST(TN)* L);
-
 //Dynamic array definitions
 //type: lst_<typename>
 typedef struct LIST(TN) {
     T* arr;
     int size; //don't change this manually
 } LIST(TN);
+
+//frees list and its elements that use heap memory
+//declaration: void aflst_<typename>(lst_<typname>* L);
+void ALLOC_FREE_LIST(TN)(LIST(TN)* L);
 
 //creates a new storage for list in the heap memory and returns its pointer
 //declaration: lst_<typename>*  mklst_<typename>();
