@@ -1,7 +1,9 @@
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
 #include "strinfo.h"
+#include "../generics.h"
 
 //Return Roman representation of an integer
 void inttrome(int num,string result,int buffer) {
@@ -10,10 +12,7 @@ void inttrome(int num,string result,int buffer) {
     assert(buffer<=MAX_CHARS);
     int current_index=-1;
     while (num!=0) {
-        if (current_index==buffer) {
-            perror("String limit exceeded");
-            exit(1);
-        }
+        checkerr((current_index==buffer),"String limit exceeded");
         if (num>=1000) {
             num-=1000;
             result[++current_index]='M';
@@ -77,14 +76,10 @@ ULL rometull(string rnum,int buffer) {
     rchar[(int)'D'-65]=500;    
     rchar[(int)'M'-65]=1000;
     for (int i=0;i<buffer;i++) {
-        if (rnum[i]=='\0') {
-            perror("Buffer error");
-            exit(1);
-        }
-        if (rchar[(int)rnum[i]-65]==0) {
-            perror("Unrecognized Roman numeral character");
-            exit(1);
-        }
+        checkerr(rnum[i]=='\0',"Buffer error");
+        int ord=(int) rnum[i]-65;
+        checkerr((ord<0 || ord > 25 || rchar[ord]==0),
+                "Unrecognized character");
     }
     bool is_vx=false,is_lc=false,is_dm=false;
     ULL sum=rchar[(int)rnum[buffer-1]-65];
