@@ -1,5 +1,6 @@
 //linked list's methods' definitions
 #include <assert.h>
+#include <stdbool.h>
 
 #ifdef ALLOC_T //T used allocated type
 
@@ -16,6 +17,22 @@ void ALLOC_FREE(TN)(NODE(TN)* L) {
     }
 }
 #endif
+
+//Check if a linked list is a cycle
+//declaration: bool ccll_<typename>(ll_<typename>* L)
+bool CHECK_CYCLE(TN)(NODE(TN)* L) {
+    assert(L!=NULL);
+    NODE(TN)* slow=L;
+    NODE(TN)* fast=L;
+    while (fast!=NULL && fast->next!=NULL) {
+        fast=fast->next->next;
+        slow=slow->next;
+        if (fast==slow) {
+            return true;
+        }
+    }
+    return false;
+}
 
 //Free a chain of connected nodes in the memory
 //declaration: void fll_<typename>(ll_<typename>* L)

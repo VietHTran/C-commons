@@ -1,8 +1,10 @@
 //Generics linked list implementation
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "../generics.h"
 #define ALLOC_FREE(TYPE_NAME) CAT(afll_, TYPE_NAME)
+#define CHECK_CYCLE(TYPE_NAME) CAT(ccll_,TYPE_NAME)
 #define FREE(TYPE_NAME) CAT(fll_, TYPE_NAME)
 #define MAKE(TYPE_NAME) CAT(mkll_, TYPE_NAME)
 #define NODE(TYPE_NAME) CAT(ll_,TYPE_NAME)
@@ -19,6 +21,10 @@ typedef struct NODE(TN) {
 //Free a chain of connected nodes that  uses allocated memory to store data
 //declaration: void afll_<typename>(ll_<typename>* L)
 void ALLOC_FREE(TN)(NODE(TN)* L);
+
+//Check if a linked list is a cycle
+//declaration: bool ccll_<typename>(ll_<typename>* L)
+bool CHECK_CYCLE(TN)(NODE(TN)* L);
 
 //Free a chain of connected nodes in the memory
 //declaration: void fll_<typename>(ll_<typename>* L)
