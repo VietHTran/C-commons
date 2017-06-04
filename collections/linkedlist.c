@@ -7,7 +7,7 @@
 //Free a chain of connected nodes that  uses allocated memory to store data
 //declaration: void afll_<typename>(ll_<typename>* L)
 void ALLOC_FREE(TN)(NODE(TN)* L) {
-    assert(L!=NULL);
+    assert(L!=NULL && !CHECK_CYCLE(TN)(L));
     NODE(TN)* holder=L;
     while (holder!=NULL) {
         NODE(TN)* i=holder;
@@ -37,7 +37,7 @@ bool CHECK_CYCLE(TN)(NODE(TN)* L) {
 //Free a chain of connected nodes in the memory
 //declaration: void fll_<typename>(ll_<typename>* L)
 void FREE(TN)(NODE(TN)* L) {
-    assert(L!=NULL);
+    assert(L!=NULL && !CHECK_CYCLE(TN)(L));
     NODE(TN)* holder=L;
     while (holder!=NULL) {
         NODE(TN)* i=holder;

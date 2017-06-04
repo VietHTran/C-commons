@@ -12,7 +12,6 @@ STACK(TN)* MAKE_STACK(TN)(){
 //declaration: void pstk_<typename>(stk_<typename>* S, <type> value);
 void PUSH_STACK(TN)(STACK(TN)* S, T value) {
     assert(S != NULL);
-
     NODE(TN)* holder=MAKE(TN)(value);
     holder->next=S->value;
     S->value=holder;
@@ -23,7 +22,6 @@ void PUSH_STACK(TN)(STACK(TN)* S, T value) {
 //declaration: <type> rmstk_<typename>(stk_<typename>* S);
 T POP_STACK(TN)(STACK(TN)* S) {
     assert(S!=NULL && S->value!=NULL);
-
     NODE(TN)* holder=S->value;
     T val;
     val=holder->value;
