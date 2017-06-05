@@ -111,3 +111,22 @@ int insubstr(string str,string sub, int index) {
 }
 
 
+//Checks if email is valid
+bool vdemail(string email) {
+    regex_t regex;
+    int result;
+    checkerr(email==NULL,"Email parameter is null\n");
+    checkerr((result=regcomp(&regex,
+                    EMAIL_REGEX,
+                    REG_EXTENDED))!=0,
+            "Compile regex error\n");
+    result=regexec(&regex,email,0,NULL,0);
+    regfree(&regex);
+    if (!result) {
+        return true;
+    } else if (result==REG_NOMATCH) {
+        return false;
+    } else {
+        checkerr(1,"Regex match error\n");
+    }
+}

@@ -1,4 +1,4 @@
-//Generics dynamic array implementation
+//Generics list implementation
 #include <stdlib.h>
 #include <stdbool.h>
 #include "../generics.h"
@@ -16,7 +16,7 @@
 #define COUNT_LIST(TYPE_NAME) CAT(clst_,TYPE_NAME)
 #define SLICE_LIST(TYPE_NAME) CAT(slclst_,TYPE_NAME)
 
-//Dynamic array definitions
+//List definitions
 //type: lst_<typename>
 typedef struct LIST(TN) {
     T* arr;
@@ -63,7 +63,7 @@ T POP_LIST(TN)(LIST(TN)* L);
 //declaration: int clst_<typename>(lst_<typename>* L);
 int COUNT_LIST(TN)(LIST(TN)* L);
 
-//returns an allocated array of pointers to specified elements in the list.
+//returns an allocated list of pointers to specified elements in the list.
 //elements are chosen based on index from start (inclusive) to end (exclusive) with steps increment.
 //declaration: <type>** slclst_<typename>(lst_<typename>* L,int start,int end,int steps);
 T** SLICE_LIST(TN)(LIST(TN)* L,int start,int end,int steps);

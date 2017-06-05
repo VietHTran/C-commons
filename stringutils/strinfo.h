@@ -6,7 +6,9 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <regex.h>
 #include "strgeneral.h"
+#include "../generics.h"
 
 #define INDEX_OF_3ARGS(_1,_2,_3) _Generic((_2),\
         char:instr,\
@@ -22,6 +24,9 @@
         __VA_ARGS__,\
         INDEX_OF_3ARGS,\
         INDEX_OF_2ARGS ) (__VA_ARGS__)
+
+//const string EMAIL_REGEX="^.+@.+\\..+$";
+const string EMAIL_REGEX="^.+[@].+\\..+$";
 
 //Returns the first index that has c character in the string str starting from index. 
 //Returns -1 if not found.
@@ -54,6 +59,9 @@ int lenstr(string str);
 
 //Checks if str ends with suffix 
 bool sffxstr(string str,string suffix);
+
+//Checks if email is valid
+bool vdemail(string email);
 
 #include "strutils.h"
 #include "strinfo.c"
