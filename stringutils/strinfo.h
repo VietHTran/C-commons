@@ -25,7 +25,7 @@
         INDEX_OF_3ARGS,\
         INDEX_OF_2ARGS ) (__VA_ARGS__)
 
-const string EMAIL_REGEX="^[^@]+[@][^@]+\\.[^\\.]+$";
+const string EMAIL_REGEX="^[A-Za-z0-9_.]+[@][A-Za-z0-9]+\\.[^\\.]+$";
 
 //Returns the first index that has c character in the string str starting from index. 
 //Returns -1 if not found.
